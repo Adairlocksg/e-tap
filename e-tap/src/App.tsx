@@ -8,7 +8,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <section className="flex">
+        <section className="flex bg-[#303030]">
           <Sidebar />
           <Router />
         </section>
