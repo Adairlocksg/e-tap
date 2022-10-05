@@ -7,7 +7,7 @@ import Teacher from "./pages/Teacher";
 export default function Router() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/home" element={<Home />} />
       <Route path="/subjects" element={<Subject />} />
       <Route path="/teachers" element={<Teacher />} />
       <Route path="/students" element={<Student />} />

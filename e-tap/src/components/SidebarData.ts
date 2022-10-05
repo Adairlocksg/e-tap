@@ -13,7 +13,7 @@ const SidebarData: SidebarDataType[] = [
     id: 1,
     description: "Início",
     icon: House,
-    path: "/",
+    path: "/home",
   },
   {
     id: 2,
