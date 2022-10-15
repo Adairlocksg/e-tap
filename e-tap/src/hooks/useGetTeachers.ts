@@ -14,17 +14,17 @@ const getTeachers = async () => {
     },
     {
       id: 2,
-      name: "John Doe",
+      name: "Eduardo",
       email: "jonhdoe@gmail.com",
     },
     {
       id: 3,
-      name: "John Doe",
+      name: "Adair",
       email: "jonhdoe@gmail.com",
     },
     {
       id: 4,
-      name: "John Doe",
+      name: "Guilherme",
       email: "jonhdoe@gmail.com",
     },
   ];
