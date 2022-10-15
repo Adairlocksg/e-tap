@@ -1,7 +1,7 @@
 import React, { ReactComponentElement } from "react";
 import { House, Book, ChalkboardTeacher, Student  } from "phosphor-react";
 
-interface SidebarDataType {
+type SidebarDataType = {
   id: number;
   description: string;
   path: string;

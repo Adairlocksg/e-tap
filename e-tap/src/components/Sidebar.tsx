@@ -6,6 +6,7 @@ import classNames from "classnames";
 
 function Sidebar() {
   const [isCollapsed, setIsCollapsed] = useState(false);
+  const [wasHovered, setWasHovered] = useState(false);
   const collapseSidebar = () => {
     setIsCollapsed(!isCollapsed);
   };
@@ -13,7 +14,7 @@ function Sidebar() {
   return (
     <aside
       className={classNames(
-        "min-h-screen text-[#303030] min-w-min text-center transition-all bg-gradient-to-r from-[#54f5cf] to-[#477bff] w-[20%] m-2 rounded-md p-5",
+        "min-h-screen text-[#303030] min-w-min text-center transition-[width] duration-300 ease-in bg-gradient-to-b from-[#54f5cf] to-[#477bff] w-[20%] m-2 rounded-md p-5 ",
         {
           "w-[5%]": isCollapsed,
         }
@@ -48,6 +49,18 @@ function Sidebar() {
                   "tooltip tooltip-right": isCollapsed,
                 })}
                 to={item.path}
+                onMouseEnter={() => {
+                  if (isCollapsed) {
+                    setWasHovered(true);
+                    setIsCollapsed(false);
+                  }
+                }}
+                onMouseLeave={() => {
+                  if (!isCollapsed && wasHovered) {
+                    setIsCollapsed(true);
+                    setWasHovered(false);
+                  }
+                }}
               >
                 <span className="sm:justify-around">
                   {<item.icon size={32} />}
@@ -57,7 +70,6 @@ function Sidebar() {
                     hidden: isCollapsed,
                   })}
                 >
-                  {" "}
                   {item.description}
                 </section>
               </Link>
