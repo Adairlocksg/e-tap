@@ -1,7 +1,28 @@
-import React from "react";
+import { useState } from "react";
+import UserTable from "../components/UserTable";
+import { usersRoles } from "../utils/usersEnum";
 
-function Student() {
-  return <div>Student</div>;
-}
+const Student = () => {
+  const [searchText, setSearchText] = useState("");
+
+  const searchInputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchText(e.target.value);
+  };
+
+  return (
+    <div className="w-full m-2">
+      <div className="w-full flex justify-between mb-2">
+        <input
+          type="text"
+          placeholder="Pesquisar aluno"
+          onInput={searchInputHandler}
+          className="input input-bordered w-full max-w-xs"
+        />
+        <button className="btn btn-active">Adicionar</button>
+      </div>
+      <UserTable searchText={searchText} role={usersRoles.student} />
+    </div>
+  );
+};
 
 export default Student;
