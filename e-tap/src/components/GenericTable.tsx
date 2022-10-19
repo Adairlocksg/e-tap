@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 type Props = {
   values?: any[];
   columns?: string[];
@@ -5,6 +7,7 @@ type Props = {
 
 const GenericTable = (props: Props) => {
   const { values, columns } = props;
+
   return (
     <>
       <div className="overflow-x-auto w-full">

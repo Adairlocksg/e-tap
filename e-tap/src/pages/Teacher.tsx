@@ -1,5 +1,6 @@
 import { useState } from "react";
-import TeacherTable from "../components/TeacherTable";
+import UserTable from "../components/UserTable";
+import { usersRoles } from "../utils/usersEnum";
 
 const Teacher = () => {
   const [searchText, setSearchText] = useState("");
@@ -19,7 +20,7 @@ const Teacher = () => {
         />
         <button className="btn btn-active">Adicionar</button>
       </div>
-      <TeacherTable searchText={searchText} />
+      <UserTable searchText={searchText} role={usersRoles.teacher} />
     </div>
   );
 };
