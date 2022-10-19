@@ -10,12 +10,7 @@ type user = {
   email: string;
 };
 
-type getUsersByRoleRes =
-  | {
-      educators?: user[];
-      students?: user[];
-    }
-  | user[];
+type getUsersByRoleRes = user[];
 
 const useQueryNameByRole = {
   [usersRoles.teacher]: "getTeacher",

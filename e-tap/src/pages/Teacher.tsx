@@ -7,17 +7,15 @@ import { usersRoles } from "../utils/usersEnum";
 const Teacher = () => {
   const [searchText, setSearchText] = useState("");
 
-  const searchInputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchText(e.target.value);
-  };
-
   return (
     <div className="w-full m-2">
       <div className="w-full flex justify-between mb-2">
         <input
           type="text"
           placeholder="Pesquisar professor"
-          onInput={searchInputHandler}
+          onInput={(e: React.ChangeEvent<HTMLInputElement>) => {
+            setSearchText(e.target.value);
+          }}
           className="input input-bordered w-full max-w-xs"
         />
         <label htmlFor="my-modal-teacher" className="btn modal-button">

@@ -9,11 +9,8 @@ type Props = {
   role: usersRoles;
 };
 
-const UserTable = (props: Props) => {
-  const { searchText, role } = props;
-  const { data, error, isLoading } = useGetUsersByRole(role);
-  if (Array.isArray(data)) return <></>;
-  const users = data?.educators || data?.students;
+const UserTable = ({ searchText, role }: Props) => {
+  const { data: users, error, isLoading } = useGetUsersByRole(role);
   const filteredUsers = useFilterData(users, searchText);
 
   if (isLoading) return <div>CARREGANDO...</div>;
@@ -21,12 +18,10 @@ const UserTable = (props: Props) => {
   if (!users?.length) return <div>SEM DADOS</div>;
 
   return (
-    <div className="w-full">
-      <GenericTable
-        values={filteredUsers ?? users}
-        columns={Object.keys(users[0])}
-      />
-    </div>
+    <GenericTable
+      values={filteredUsers ?? users}
+      columns={Object.keys(users[0])}
+    />
   );
 };
 
