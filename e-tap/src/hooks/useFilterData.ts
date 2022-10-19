@@ -15,9 +15,7 @@ const useFilterData = (
       const dataValues = Object.values(data).join("").toLowerCase();
       return dataValues.includes(searchText.toLowerCase());
     });
-    setFilterData(
-      filteredData?.length || searchText?.length ? filteredData : dataToFilter
-    );
+    setFilterData(filteredData);
   }, [searchText]);
 
   return filterData;
