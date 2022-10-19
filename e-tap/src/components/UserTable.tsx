@@ -11,9 +11,7 @@ type Props = {
 
 const UserTable = (props: Props) => {
   const { searchText, role } = props;
-  const { data, error, isLoading } = useGetUsersByRole(role);
-  if (Array.isArray(data)) return <></>;
-  const users = data?.educators || data?.students;
+  const { data: users, error, isLoading } = useGetUsersByRole(role);
   const filteredUsers = useFilterData(users, searchText);
 
   if (isLoading) return <div>CARREGANDO...</div>;
