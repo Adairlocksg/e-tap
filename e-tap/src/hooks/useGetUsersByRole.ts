@@ -13,7 +13,7 @@ type user = {
 type getUsersByRoleRes = user[];
 
 const useQueryNameByRole = {
-  [usersRoles.teacher]: "getTeacher",
+  [usersRoles.teacher]: "getTeachers",
   [usersRoles.student]: "getStudents",
   [usersRoles.all]: "getAll",
 };
