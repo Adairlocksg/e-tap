@@ -5,7 +5,7 @@ import { queryClient } from "../App";
 import enviroment from "../environments/enviroment";
 import GenericWindow from "./GenericWindow";
 
-type teacher = {
+type student = {
   name: string;
   lastname: string;
   email: string;
@@ -13,54 +13,54 @@ type teacher = {
   password: string;
 };
 
-const TeacherWindow = () => {
-  const [teacher, setTeacher] = useState<teacher>({
+const StudentWindow = () => {
+  const [student, setStudent] = useState<student>({
     name: "",
     lastname: "",
     email: "",
-    permission: 2,
+    permission: 1,
     password: "",
   });
 
-  const [isStudent, setIsStudent] = useState<boolean>(false);
+  const [isTeacher, setIsTeacher] = useState<boolean>(false);
 
   const mutation = useMutation(
-    (t: teacher) => axios.post(`${enviroment.railway}adm/new_user/`, t),
+    (s: student) => axios.post(`${enviroment.railway}adm/new_user/`, s),
     {
       onSuccess: () => {
-        queryClient.invalidateQueries(["getTeachers"]);
+        queryClient.invalidateQueries(["getStudents"]);
         (document.querySelector(".btn") as any)?.click();
-      },
+      }
     }
   );
 
-  const handleChangeTeacher = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChangeStudent = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     const name = e.target.name;
 
-    setTeacher({
-      ...teacher,
+    setStudent({
+      ...student,
       [name]: e.target.value,
     });
   };
 
-  const handleSaveTeacher = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSaveStudent = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    mutation.mutate({ ...teacher, permission: isStudent ? 4 : 2 });
+    mutation.mutate({ ...student, permission: isTeacher ? 4 : 1 });
   };
 
   return (
-    <GenericWindow title="Professor">
-      <form onSubmit={handleSaveTeacher}>
+    <GenericWindow title="Aluno">
+      <form onSubmit={handleSaveStudent}>
         <div className="form-control">
           <div className="w-ful flex flex-col">
             <span className="label-text">Nome</span>
             <input
               type="text"
               name="name"
-              value={teacher.name}
+              value={student.name}
               placeholder="Escreva aqui"
-              onChange={handleChangeTeacher}
+              onChange={handleChangeStudent}
               required
               className="input input-bordered w-full mb-4"
             />
@@ -68,9 +68,9 @@ const TeacherWindow = () => {
             <input
               type="text"
               name="lastname"
-              value={teacher.lastname}
+              value={student.lastname}
               placeholder="Escreva aqui"
-              onChange={handleChangeTeacher}
+              onChange={handleChangeStudent}
               required
               className="input input-bordered w-full mb-4"
             />
@@ -79,9 +79,9 @@ const TeacherWindow = () => {
             <input
               type="email"
               name="email"
-              value={teacher.email}
+              value={student.email}
               placeholder="Escreva aqui"
-              onChange={handleChangeTeacher}
+              onChange={handleChangeStudent}
               required
               className="input input-bordered w-full mb-4"
             />
@@ -89,17 +89,17 @@ const TeacherWindow = () => {
             <input
               type="text"
               name="password"
-              value={teacher.password}
+              value={student.password}
               placeholder="Escreva aqui"
-              onChange={handleChangeTeacher}
+              onChange={handleChangeStudent}
               required
               className="input input-bordered  w-full mb-4"
             />
-            <span className="label-text">Também é aluno?</span>
+            <span className="label-text">Também é professor?</span>
             <input
               type="checkbox"
-              checked={isStudent}
-              onChange={(e) => setIsStudent(!isStudent)}
+              checked={isTeacher}
+              onChange={(e) => setIsTeacher(!isTeacher)}
               className="checkbox"
             />
           </div>
@@ -117,4 +117,4 @@ const TeacherWindow = () => {
   );
 };
 
-export default TeacherWindow;
+export default StudentWindow;
