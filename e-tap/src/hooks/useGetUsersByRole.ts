@@ -18,6 +18,12 @@ const useQueryNameByRole = {
   [usersRoles.all]: "getAll",
 };
 
+const roleQuery = {
+  [usersRoles.teacher]: "educators",
+  [usersRoles.student]: "students",
+  [usersRoles.all]: "students-educators",
+};
+
 const useGetUsersByRole = (role: usersRoles) => {
   return useQuery([useQueryNameByRole[role]], getUsersByRole(role));
 };
@@ -25,7 +31,9 @@ const useGetUsersByRole = (role: usersRoles) => {
 const getUsersByRole = (role: usersRoles) => {
   return () =>
     axios
-      .get<getUsersByRoleRes>(`${enviroment.railway}adm/getall/${role}/`)
+      .get<getUsersByRoleRes>(
+        `${enviroment.railway}adm/getall/${roleQuery[role]}/`
+      )
       .then(({ data }) => data);
 };
 
