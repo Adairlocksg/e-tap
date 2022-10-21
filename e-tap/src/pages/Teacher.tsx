@@ -1,7 +1,9 @@
 import { useState } from "react";
+
+import TeacherWindow from "../components/TeacherWindow";
+
 import UserTable from "../components/UserTable";
 import { usersRoles } from "../utils/usersEnum";
-
 const Teacher = () => {
   const [searchText, setSearchText] = useState("");
 
@@ -16,7 +18,11 @@ const Teacher = () => {
           }}
           className="input input-bordered w-full max-w-xs"
         />
-        <button className="btn btn-active">Adicionar</button>
+        <label htmlFor="my-modal-teacher" className="btn modal-button">
+          Adicionar
+        </label>
+        <input type="checkbox" id="my-modal-teacher" className="modal-toggle" />
+        <TeacherWindow />
       </div>
       <UserTable searchText={searchText} role={usersRoles.teacher} />
     </div>

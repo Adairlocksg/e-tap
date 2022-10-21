@@ -5,8 +5,7 @@ import Router from "./Router";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import axios from "axios";
 
-// Create a client
-const queryClient = new QueryClient();
+export const queryClient = new QueryClient();
 
 function App() {
   axios.defaults.headers.common[
