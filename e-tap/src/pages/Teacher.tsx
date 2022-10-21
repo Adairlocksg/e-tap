@@ -1,12 +1,11 @@
 import { useState } from "react";
-import TeacherTable from "../components/TeacherTable";
 
+import TeacherWindow from "../components/TeacherWindow";
+
+import UserTable from "../components/UserTable";
+import { usersRoles } from "../utils/usersEnum";
 const Teacher = () => {
   const [searchText, setSearchText] = useState("");
-
-  const searchInputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchText(e.target.value);
-  };
 
   return (
     <div className="w-full m-2">
@@ -14,12 +13,18 @@ const Teacher = () => {
         <input
           type="text"
           placeholder="Pesquisar professor"
-          onInput={searchInputHandler}
+          onInput={(e: React.ChangeEvent<HTMLInputElement>) => {
+            setSearchText(e.target.value);
+          }}
           className="input input-bordered w-full max-w-xs"
         />
-        <button className="btn btn-active">Adicionar</button>
+        <label htmlFor="my-modal-teacher" className="btn modal-button">
+          Adicionar
+        </label>
+        <input type="checkbox" id="my-modal-teacher" className="modal-toggle" />
+        <TeacherWindow />
       </div>
-      <TeacherTable searchText={searchText} />
+      <UserTable searchText={searchText} role={usersRoles.teacher} />
     </div>
   );
 };

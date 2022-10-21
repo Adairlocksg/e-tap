@@ -6,7 +6,6 @@ import classNames from "classnames";
 
 function Sidebar() {
   const [isCollapsed, setIsCollapsed] = useState(false);
-  const [wasHovered, setWasHovered] = useState(false);
   const collapseSidebar = () => {
     setIsCollapsed(!isCollapsed);
   };
@@ -49,18 +48,6 @@ function Sidebar() {
                   "tooltip tooltip-right": isCollapsed,
                 })}
                 to={item.path}
-                onMouseEnter={() => {
-                  if (isCollapsed) {
-                    setWasHovered(true);
-                    setIsCollapsed(false);
-                  }
-                }}
-                onMouseLeave={() => {
-                  if (!isCollapsed && wasHovered) {
-                    setIsCollapsed(true);
-                    setWasHovered(false);
-                  }
-                }}
               >
                 <span className="sm:justify-around">
                   {<item.icon size={32} />}
