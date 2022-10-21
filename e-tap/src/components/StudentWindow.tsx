@@ -46,7 +46,7 @@ const StudentWindow = () => {
 
   const handleSaveStudent = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    mutation.mutate({ ...student, permission: isTeacher ? 4 : 1 });
+    mutation.mutate({ ...student, permission: isTeacher ? 4 : 3 });
   };
 
   return (
