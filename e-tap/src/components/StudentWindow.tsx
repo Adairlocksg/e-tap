@@ -27,10 +27,11 @@ const StudentWindow = () => {
   const mutation = useMutation(
     (s: student) => axios.post(`${enviroment.railway}adm/new_user/`, s),
     {
-      onSuccess: () => {
+      onSuccess: async () => {
         queryClient.invalidateQueries(["getStudents"]);
-        (document.querySelector(".btn") as any)?.click();
-      }
+        console.log("invalidou");
+        (document.querySelector(".btn-error") as HTMLButtonElement)?.click;
+      },
     }
   );
 

@@ -29,6 +29,7 @@ const useGetUsersByRole = (role: usersRoles) => {
 };
 
 const getUsersByRole = (role: usersRoles) => {
+  console.log("opa");
   return () =>
     axios
       .get<getUsersByRoleRes>(
