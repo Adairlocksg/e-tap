@@ -1,7 +1,105 @@
-import React from "react";
+import { useMutation } from "@tanstack/react-query";
+import axios from "axios";
+import { Eye, EyeSlash } from "phosphor-react";
+import React, { useState } from "react";
+import enviroment from "../environments/enviroment";
 
-function Login() {
-  return <div>Login</div>;
+type user = {
+  email: string;
+  password: string;
+};
+
+function Login({ setAuthToken }: any) {
+  const [user, setUser] = useState<user>({
+    email: "",
+    password: "",
+  });
+
+  const [passwordShown, setPasswordShown] = useState(false);
+
+  const mutation = useMutation(
+    (u: user) => axios.post(`${enviroment.railway}login/`, u),
+    {
+      onSuccess: (response) => {
+        if (!response.data || response.data.status !== "success")
+          return alert("E-mail ou senha inválidos");
+
+        if (response.data.permission !== 1)
+          return alert("Você só pode entrar com um perfil de administrador");
+
+        const authToken = `Bearer ${response.data.token}`;
+
+        localStorage.setItem("@authToken", authToken);
+
+        setAuthToken(authToken);
+      },
+    }
+  );
+
+  const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    mutation.mutate({ ...user });
+  };
+
+  const handleChangeUser = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    const name = e.target.name;
+
+    setUser({
+      ...user,
+      [name]: e.target.value,
+    });
+  };
+
+  return (
+    <div className="grid place-items-center h-screen">
+      <div className="card w-[500px] bg-base-100 shadow-xl">
+        <form onSubmit={handleLogin}>
+          <div className="form-control">
+            <div className="card-body">
+              <h2 className="flex justify-center text-5xl mb-2">e-Tap</h2>
+              <input
+                type="email"
+                name="email"
+                value={user.email}
+                placeholder="E-mail"
+                onChange={handleChangeUser}
+                required
+                className="input input-bordered w-full mb-4"
+              />
+              <div className="flex">
+                <input
+                  type={passwordShown ? "text" : "password"}
+                  name="password"
+                  value={user.password}
+                  placeholder="Senha"
+                  onChange={handleChangeUser}
+                  required
+                  className="input input-bordered w-full"
+                />
+                {passwordShown ? (
+                  <Eye
+                    className="ml-2 mt-2 cursor-pointer"
+                    size={32}
+                    onClick={() => setPasswordShown(false)}
+                  />
+                ) : (
+                  <EyeSlash
+                    className="ml-2 mt-2 cursor-pointer"
+                    size={32}
+                    onClick={() => setPasswordShown(true)}
+                  />
+                )}
+              </div>
+              <div className="card-actions justify-center">
+                <button className="btn btn-success">Entrar</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
 }
 
 export default Login;
