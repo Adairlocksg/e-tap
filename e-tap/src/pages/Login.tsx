@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
-import { Eye, EyeSlash } from "phosphor-react";
+import { Eye, EyeSlash, SignIn } from "phosphor-react";
 import React, { useState } from "react";
 import enviroment from "../environments/enviroment";
 
@@ -92,7 +92,10 @@ function Login({ setAuthToken }: any) {
                 )}
               </div>
               <div className="card-actions justify-center">
-                <button className="btn btn-success">Entrar</button>
+                <button className="btn btn-success">
+                  Entrar &nbsp;&nbsp;
+                  <SignIn size={20} />
+                </button>
               </div>
             </div>
           </div>
