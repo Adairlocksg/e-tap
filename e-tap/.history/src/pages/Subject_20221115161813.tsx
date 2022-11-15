@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import SubjectTable from "../components/SubjectTable";
 import UserTable from "../components/UserTable";
 import { usersRoles } from "../utils/usersEnum";
 
@@ -20,15 +19,12 @@ function Subject() {
           onInput={searchInputHandler}
           className="input input-bordered w-full max-w-xs"
         />
-        <label
-          htmlFor="my-modal-teacher"
-          className="btn btn-secondary modal-button"
-        >
+        <label htmlFor="my-modal-teacher" className="btn modal-button">
           Adicionar
         </label>
         <input type="checkbox" id="my-modal-teacher" className="modal-toggle" />
       </div>
-      <SubjectTable searchText={searchText} />
+      <UserTable searchText={searchText} />
     </div>
   );
 }

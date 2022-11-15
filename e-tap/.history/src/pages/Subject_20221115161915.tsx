@@ -20,10 +20,7 @@ function Subject() {
           onInput={searchInputHandler}
           className="input input-bordered w-full max-w-xs"
         />
-        <label
-          htmlFor="my-modal-teacher"
-          className="btn btn-secondary modal-button"
-        >
+        <label htmlFor="my-modal-teacher" className="btn modal-button">
           Adicionar
         </label>
         <input type="checkbox" id="my-modal-teacher" className="modal-toggle" />

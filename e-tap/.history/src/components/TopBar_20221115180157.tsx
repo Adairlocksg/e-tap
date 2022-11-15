@@ -19,16 +19,32 @@ const TopBar = () => {
     themeChange(false);
   }, []);
 
-  const nextTheme = theme === "light" ? "dark" : "light";
-
   return (
     <div className="m-2 flex justify-end">
+      {theme === "light" ? (
+        <button
+          className="btn btn-circle"
+          data-set-theme="dark"
+          onClick={() => setTheme("dark")}
+        >
+          🌙
+        </button>
+      ) : (
+        <button
+          className="btn btn-circle"
+          data-set-theme="light"
+          onClick={() => setTheme("light")}
+        >
+          ☀️
+        </button>
+      )}
+
       <button
         className="btn btn-circle"
-        data-set-theme={nextTheme}
-        onClick={() => setTheme(nextTheme)}
+        data-set-theme="light"
+        onClick={() => setTheme("light")}
       >
-        {themesStructure[nextTheme].emoji}
+        {themesStructure[theme].emoji}
       </button>
     </div>
   );

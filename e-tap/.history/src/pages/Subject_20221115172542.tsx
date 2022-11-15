@@ -22,7 +22,7 @@ function Subject() {
         />
         <label
           htmlFor="my-modal-teacher"
-          className="btn btn-secondary modal-button"
+          className="btn btn-primary modal-button"
         >
           Adicionar
         </label>

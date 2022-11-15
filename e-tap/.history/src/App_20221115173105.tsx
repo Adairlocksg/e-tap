@@ -1,6 +1,6 @@
 import { BrowserRouter } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
-import "./index.css";
+import "./input.css";
 import Router from "./Router";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import axios from "axios";
