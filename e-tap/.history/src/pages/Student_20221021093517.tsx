@@ -5,14 +5,13 @@ import { usersRoles } from "../utils/usersEnum";
 
 const Student = () => {
   const [searchText, setSearchText] = useState("");
-  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
   const searchInputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchText(e.target.value);
   };
 
   return (
-    <div className="w-full p-2">
+    <div className="w-full m-2">
       <div className="w-full flex justify-between mb-2">
         <input
           type="text"
@@ -24,7 +23,7 @@ const Student = () => {
           Adicionar
         </label>
         <input type="checkbox" id="my-modal-teacher" className="modal-toggle" />
-        <StudentWindow setIsOpen={setIsAddModalOpen} isOpen={isAddModalOpen} />
+        <StudentWindow />
       </div>
       <UserTable searchText={searchText} role={usersRoles.student} />
     </div>

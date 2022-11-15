@@ -12,7 +12,7 @@ const Student = () => {
   };
 
   return (
-    <div className="w-full p-2">
+    <div className="w-full m-2">
       <div className="w-full flex justify-between mb-2">
         <input
           type="text"
