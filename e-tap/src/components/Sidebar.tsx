@@ -72,7 +72,14 @@ const Sidebar = ({ setAuthToken }: any) => {
           })}
         </ul>
         <button onClick={handleLogOut} className="btn btn-error">
-          Sair &nbsp;&nbsp; <SignOut size={20} />
+          <span
+            className={classNames("mr-2", {
+              hidden: isCollapsed,
+            })}
+          >
+            Sair
+          </span>
+          <SignOut size={20} />
         </button>
       </div>
     </aside>
