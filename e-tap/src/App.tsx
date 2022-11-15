@@ -1,5 +1,5 @@
 import { BrowserRouter } from "react-router-dom";
-import Sidebar from "./components/Sidebar";
+import Sidebar from "./components/layout/Sidebar";
 import "./input.css";
 import Router from "./Router";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -7,7 +7,7 @@ import axios from "axios";
 
 import { themeChange } from "theme-change";
 import { useEffect, useState } from "react";
-import TopBar from "./components/TopBar";
+import TopBar from "./components/layout/TopBar";
 
 export const queryClient = new QueryClient();
 

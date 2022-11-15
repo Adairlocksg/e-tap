@@ -1,6 +1,6 @@
 import { useState } from "react";
-import StudentWindow from "../components/StudentWindow";
-import UserTable from "../components/UserTable";
+import StudentWindow from "../components/student/StudentWindow";
+import UserTable from "../components/user/UserTable";
 import { usersRoles } from "../utils/usersEnum";
 
 const Student = () => {
@@ -23,13 +23,13 @@ const Student = () => {
           className="input input-bordered w-full max-w-xs"
         />
         <label
-          htmlFor="my-modal-teacher"
+          htmlFor="my-modal-student"
           className="btn modal-button"
           onClick={() => setIsAddModalOpen(true)}
         >
           Adicionar
         </label>
-        <input type="checkbox" id="my-modal-teacher" className="modal-toggle" />
+        <input type="checkbox" id="my-modal-student" className="modal-toggle" />
         <StudentWindow setIsOpen={setIsAddModalOpen} isOpen={isAddModalOpen} />
       </div>
       <UserTable searchText={searchText} role={usersRoles.student} />

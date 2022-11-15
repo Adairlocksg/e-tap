@@ -1,9 +1,9 @@
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { useState } from "react";
-import { queryClient } from "../App";
-import enviroment from "../environments/enviroment";
-import GenericWindow from "./GenericWindow";
+import { queryClient } from "../../App";
+import enviroment from "../../environments/enviroment";
+import GenericWindow from "../base/GenericWindow";
 
 type student = {
   name: string;
