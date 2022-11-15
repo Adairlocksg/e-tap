@@ -13,14 +13,14 @@ export const queryClient = new QueryClient();
 
 function App() {
   const token = `Bearer eyJlbWFpbCI6ICJnZkBnbWFpbC5jb20iLCAicGFzc3dvcmQiOiAic2VuaGExMjMifQ==`;
+
   axios.defaults.headers.common["Authorization"] = token;
 
   return (
     <>
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
-          <section className="flex  h-screen">
-            {/* <section className="flex bg-[#303030] h-screen"> */}
+          <section className="flex bg-[#303030] h-screen">
             <Sidebar />
             <div className="w-full">
               <TopBar />

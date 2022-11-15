@@ -19,7 +19,7 @@ function App() {
     <>
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
-          <section className="flex  h-screen">
+          <section className="flex bg-[var(--b1)] h-screen">
             {/* <section className="flex bg-[#303030] h-screen"> */}
             <Sidebar />
             <div className="w-full">

@@ -6,26 +6,26 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import axios from "axios";
 
 import { themeChange } from "theme-change";
-import { useEffect, useState } from "react";
-import TopBar from "./components/TopBar";
+import { useEffect } from "react";
 
 export const queryClient = new QueryClient();
 
 function App() {
-  const token = `Bearer eyJlbWFpbCI6ICJnZkBnbWFpbC5jb20iLCAicGFzc3dvcmQiOiAic2VuaGExMjMifQ==`;
-  axios.defaults.headers.common["Authorization"] = token;
+  axios.defaults.headers.common[
+    "Authorization"
+  ] = `Bearer eyJlbWFpbCI6ICJnZkBnbWFpbC5jb20iLCAicGFzc3dvcmQiOiAic2VuaGExMjMifQ==`;
+
+  useEffect(() => {
+    themeChange(false);
+  }, []);
 
   return (
     <>
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
-          <section className="flex  h-screen">
-            {/* <section className="flex bg-[#303030] h-screen"> */}
+          <section className="flex bg-[#303030]">
             <Sidebar />
-            <div className="w-full">
-              <TopBar />
-              <Router />
-            </div>
+            <Router />
           </section>
         </BrowserRouter>
       </QueryClientProvider>

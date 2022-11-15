@@ -7,7 +7,7 @@ type Props = {
 
 const GenericTable = ({ values, columns }: Props) => {
   return (
-    <div className="w-full overflow-x-auto">
+    <div className="max-h-full overflow-y-auto">
       <table className="table w-full">
         <thead>
           <tr>

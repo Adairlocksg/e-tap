@@ -22,10 +22,12 @@ const UserTable = ({ searchText, role }: Props) => {
   if (!users?.length) return <div>SEM DADOS</div>;
 
   return (
-    <GenericTable
-      values={filteredUsers ?? users}
-      columns={Object.keys(users[0])}
-    />
+    <div className="h-[calc(100vh - 7rem)]">
+      <GenericTable
+        values={filteredUsers ?? users}
+        columns={Object.keys(users[0])}
+      />
+    </div>
   );
 };
 

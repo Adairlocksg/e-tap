@@ -10,7 +10,7 @@ const Teacher = () => {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
   return (
-    <div className="h-[calc(100vh-2.7rem)] w-full p-2 flex flex-col">
+    <div className="max-h-screen w-full p-2 flex flex-col">
       <div className="w-full flex justify-between mb-2">
         <input
           type="text"

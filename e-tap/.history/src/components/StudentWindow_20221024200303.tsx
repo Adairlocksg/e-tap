@@ -53,7 +53,7 @@ const StudentWindow = () => {
     <GenericWindow title="Aluno">
       <form onSubmit={handleSaveStudent}>
         <div className="form-control">
-          <div className="w-full flex flex-col">
+          <div className="w-ful flex flex-col">
             <span className="label-text">Nome</span>
             <input
               type="text"

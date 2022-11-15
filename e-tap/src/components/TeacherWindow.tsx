@@ -13,7 +13,12 @@ type teacher = {
   password: string;
 };
 
-const TeacherWindow = () => {
+type Props = {
+  isOpen: boolean;
+  setIsOpen: React.Dispatch<boolean>;
+};
+
+const TeacherWindow = ({ isOpen, setIsOpen }: Props) => {
   const [teacher, setTeacher] = useState<teacher>({
     name: "",
     lastname: "",
@@ -27,9 +32,9 @@ const TeacherWindow = () => {
   const mutation = useMutation(
     (t: teacher) => axios.post(`${enviroment.railway}adm/new_user/`, t),
     {
-      onSuccess: () => {
-        queryClient.invalidateQueries(["getTeachers"]);
-        (document.querySelector(".btn") as any)?.click();
+      onSuccess: async () => {
+        await queryClient.invalidateQueries(["getTeachers"], { type: "all" });
+        setIsOpen(false);
       },
     }
   );
@@ -50,7 +55,7 @@ const TeacherWindow = () => {
   };
 
   return (
-    <GenericWindow title="Professor">
+    <GenericWindow title="Professor" isOpen={isOpen} setIsOpen={setIsOpen}>
       <form onSubmit={handleSaveTeacher}>
         <div className="form-control">
           <div className="w-ful flex flex-col">
@@ -99,14 +104,19 @@ const TeacherWindow = () => {
             <input
               type="checkbox"
               checked={isStudent}
-              onChange={(e) => setIsStudent(!isStudent)}
+              onChange={() => setIsStudent(!isStudent)}
               className="checkbox"
             />
           </div>
           <div className="modal-action">
-            <label htmlFor="my-modal-teacher" className="btn btn-error">
+            <button
+              className="btn btn-error"
+              onClick={() => {
+                setIsOpen(false);
+              }}
+            >
               Cancelar
-            </label>
+            </button>
             <button type="submit" className="btn btn-success">
               Salvar
             </button>
