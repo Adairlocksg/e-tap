@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import SubjectWindow from "../components/subject/SubjectWindow";
-import SubjectTable from "../components/SubjectTable";
+import SubjectTable from "../components/subject/SubjectTable";
 
 function Subject() {
   const [searchText, setSearchText] = useState("");
@@ -29,7 +29,7 @@ function Subject() {
         <input type="checkbox" id="my-modal-subject" className="modal-toggle" />
         <SubjectWindow setIsOpen={setIsAddModalOpen} isOpen={isAddModalOpen} />
       </div>
-      <SubjectTable searchText={searchText} />
+      {/* <SubjectTable searchText={searchText} /> */}
     </div>
   );
 }

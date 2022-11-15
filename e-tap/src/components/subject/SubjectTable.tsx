@@ -1,6 +1,6 @@
-import useFilterData from "../hooks/useFilterData";
-import useGetSubjects from "../hooks/useGetSubjects";
-import GenericTable from "./GenericTable";
+import useFilterData from "../../hooks/useFilterData";
+import useGetSubjects from "../../hooks/useGetSubjects";
+import GenericTable from "../base/GenericTable";
 
 type Props = {
   searchText?: string;
