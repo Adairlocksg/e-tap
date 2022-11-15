@@ -1,13 +1,19 @@
 import { Link } from "react-router-dom";
 import SidebarData from "./SidebarData";
-import { ArrowLeft, ArrowRight } from "phosphor-react";
+import { ArrowLeft, ArrowRight, SignOut } from "phosphor-react";
 import { useState } from "react";
 import classNames from "classnames";
 
-function Sidebar() {
+const Sidebar = ({ setAuthToken }: any) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const collapseSidebar = () => {
     setIsCollapsed(!isCollapsed);
+  };
+
+  const handleLogOut = () => {
+    localStorage.setItem("@authToken", "");
+
+    setAuthToken("");
   };
 
   return (
@@ -35,37 +41,42 @@ function Sidebar() {
           size={40}
         />
       )}
-      <ul className="text-lg">
-        {SidebarData.map((item) => {
-          return (
-            <li
-              className="p-5 rounded-md hover:bg-white/30 backdrop-blur-sm transition ease-in-out duration-300"
-              key={item.id}
-            >
-              <Link
-                data-tip={isCollapsed ? item.description : ""}
-                className={classNames("flex text-center", {
-                  "tooltip tooltip-right": isCollapsed,
-                })}
-                to={item.path}
+      <div className="flex justify-between h-[calc(100vh-1.25rem)] flex-col">
+        <ul className="text-lg">
+          {SidebarData.map((item) => {
+            return (
+              <li
+                className="p-5 rounded-md hover:bg-white/30 backdrop-blur-sm transition ease-in-out duration-300"
+                key={item.id}
               >
-                <span className="sm:justify-around">
-                  {<item.icon size={32} />}
-                </span>
-                <section
-                  className={classNames("ml-5", {
-                    hidden: isCollapsed,
+                <Link
+                  data-tip={isCollapsed ? item.description : ""}
+                  className={classNames("flex text-center", {
+                    "tooltip tooltip-right": isCollapsed,
                   })}
+                  to={item.path}
                 >
-                  {item.description}
-                </section>
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
+                  <span className="sm:justify-around">
+                    {<item.icon size={32} />}
+                  </span>
+                  <section
+                    className={classNames("ml-5", {
+                      hidden: isCollapsed,
+                    })}
+                  >
+                    {item.description}
+                  </section>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+        <button onClick={handleLogOut} className="btn btn-error">
+          Sair &nbsp;&nbsp; <SignOut size={20} />
+        </button>
+      </div>
     </aside>
   );
-}
+};
 
 export default Sidebar;

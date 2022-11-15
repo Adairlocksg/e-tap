@@ -29,7 +29,7 @@ function App() {
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
           <section className="flex bg-[#303030]">
-            <Sidebar />
+            <Sidebar setAuthToken={setAuthToken} />
             <Router />
           </section>
         </BrowserRouter>
