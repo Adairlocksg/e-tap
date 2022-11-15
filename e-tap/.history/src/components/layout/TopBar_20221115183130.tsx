@@ -13,7 +13,7 @@ const themesStructure: { [key: string]: any } = {
 };
 
 const TopBar = () => {
-  const [theme, setTheme] = useState(localStorage.getItem("theme") ?? "dark");
+  const [theme, setTheme] = useState(localStorage.getItem("theme") ?? "light");
 
   useEffect(() => {
     themeChange(false);
