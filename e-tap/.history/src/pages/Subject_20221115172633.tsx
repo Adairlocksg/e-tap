@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import SubjectWindow from "../components/subject/SubjectWindow";
 import SubjectTable from "../components/SubjectTable";
+import UserTable from "../components/UserTable";
+import { usersRoles } from "../utils/usersEnum";
 
 function Subject() {
   const [searchText, setSearchText] = useState("");
@@ -20,14 +21,13 @@ function Subject() {
           className="input input-bordered w-full max-w-xs"
         />
         <label
-          htmlFor="my-modal-subject"
-          onClick={() => setIsAddModalOpen(true)}
-          className="btn modal-button btn-secondary"
+          htmlFor="my-modal-teacher"
+          className="btn btn-secondary
+           modal-button"
         >
           Adicionar
         </label>
-        <input type="checkbox" id="my-modal-subject" className="modal-toggle" />
-        <SubjectWindow setIsOpen={setIsAddModalOpen} isOpen={isAddModalOpen} />
+        <input type="checkbox" id="my-modal-teacher" className="modal-toggle" />
       </div>
       <SubjectTable searchText={searchText} />
     </div>

@@ -1,10 +1,10 @@
 import { BrowserRouter } from "react-router-dom";
-import Sidebar from "./components/layout/Sidebar";
+import Sidebar from "./components/Sidebar";
 import "./index.css";
 import Router from "./Router";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import axios from "axios";
-import TopBar from "./components/layout/TopBar";
+import TopBar from "./components/TopBar";
 
 export const queryClient = new QueryClient();
 
