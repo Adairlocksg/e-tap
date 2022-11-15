@@ -5,7 +5,7 @@ import { queryClient } from "../App";
 import enviroment from "../environments/enviroment";
 import GenericWindow from "./GenericWindow";
 
-type student = {
+type teacher = {
   name: string;
   lastname: string;
   email: string;
@@ -18,54 +18,54 @@ type Props = {
   setIsOpen: React.Dispatch<boolean>;
 };
 
-const StudentWindow = ({ isOpen, setIsOpen }: Props) => {
-  const [student, setStudent] = useState<student>({
+const TeacherWindow = ({ isOpen, setIsOpen }: Props) => {
+  const [teacher, setTeacher] = useState<teacher>({
     name: "",
     lastname: "",
     email: "",
-    permission: 1,
+    permission: 2,
     password: "",
   });
 
-  const [isTeacher, setIsTeacher] = useState<boolean>(false);
+  const [isStudent, setIsStudent] = useState<boolean>(false);
 
   const mutation = useMutation(
-    (s: student) => axios.post(`${enviroment.railway}adm/new_user/`, s),
+    (t: teacher) => axios.post(`${enviroment.railway}adm/new_user/`, t),
     {
       onSuccess: async () => {
-        await queryClient.invalidateQueries(["getStudents"]);
+        await queryClient.invalidateQueries(["getTeachers"], { type: "all" });
         setIsOpen(false);
       },
     }
   );
 
-  const handleChangeStudent = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChangeTeacher = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     const name = e.target.name;
 
-    setStudent({
-      ...student,
+    setTeacher({
+      ...teacher,
       [name]: e.target.value,
     });
   };
 
-  const handleSaveStudent = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSaveTeacher = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    mutation.mutate({ ...student, permission: isTeacher ? 4 : 3 });
+    mutation.mutate({ ...teacher, permission: isStudent ? 4 : 2 });
   };
 
   return (
-    <GenericWindow title="Aluno" isOpen={isOpen} setIsOpen={setIsOpen}>
-      <form onSubmit={handleSaveStudent}>
+    <GenericWindow title="Professor" isOpen={isOpen} setIsOpen={setIsOpen}>
+      <form onSubmit={handleSaveTeacher}>
         <div className="form-control">
-          <div className="w-full flex flex-col">
+          <div className="w-ful flex flex-col">
             <span className="label-text">Nome</span>
             <input
               type="text"
               name="name"
-              value={student.name}
+              value={teacher.name}
               placeholder="Escreva aqui"
-              onChange={handleChangeStudent}
+              onChange={handleChangeTeacher}
               required
               className="input input-bordered w-full mb-4"
             />
@@ -73,9 +73,9 @@ const StudentWindow = ({ isOpen, setIsOpen }: Props) => {
             <input
               type="text"
               name="lastname"
-              value={student.lastname}
+              value={teacher.lastname}
               placeholder="Escreva aqui"
-              onChange={handleChangeStudent}
+              onChange={handleChangeTeacher}
               required
               className="input input-bordered w-full mb-4"
             />
@@ -84,9 +84,9 @@ const StudentWindow = ({ isOpen, setIsOpen }: Props) => {
             <input
               type="email"
               name="email"
-              value={student.email}
+              value={teacher.email}
               placeholder="Escreva aqui"
-              onChange={handleChangeStudent}
+              onChange={handleChangeTeacher}
               required
               className="input input-bordered w-full mb-4"
             />
@@ -94,17 +94,17 @@ const StudentWindow = ({ isOpen, setIsOpen }: Props) => {
             <input
               type="text"
               name="password"
-              value={student.password}
+              value={teacher.password}
               placeholder="Escreva aqui"
-              onChange={handleChangeStudent}
+              onChange={handleChangeTeacher}
               required
               className="input input-bordered  w-full mb-4"
             />
-            <span className="label-text">Também é professor?</span>
+            <span className="label-text">Também é aluno?</span>
             <input
               type="checkbox"
-              checked={isTeacher}
-              onChange={(e) => setIsTeacher(!isTeacher)}
+              checked={isStudent}
+              onChange={() => setIsStudent(!isStudent)}
               className="checkbox"
             />
           </div>
@@ -127,4 +127,4 @@ const StudentWindow = ({ isOpen, setIsOpen }: Props) => {
   );
 };
 
-export default StudentWindow;
+export default TeacherWindow;

@@ -16,7 +16,7 @@ const Student = () => {
       <div className="w-full flex justify-between mb-2">
         <input
           type="text"
-          placeholder="Pesquisar aluno"
+          placeholder="Pesquisar professor"
           onInput={(e: React.ChangeEvent<HTMLInputElement>) => {
             setSearchText(e.target.value);
           }}

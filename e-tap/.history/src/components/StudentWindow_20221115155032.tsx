@@ -109,14 +109,9 @@ const StudentWindow = ({ isOpen, setIsOpen }: Props) => {
             />
           </div>
           <div className="modal-action">
-            <button
-              className="btn btn-error"
-              onClick={() => {
-                setIsOpen(false);
-              }}
-            >
+            <label htmlFor="my-modal-teacher" className="btn btn-error">
               Cancelar
-            </button>
+            </label>
             <button type="submit" className="btn btn-success">
               Salvar
             </button>
