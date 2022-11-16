@@ -1,7 +1,6 @@
 import useFilterData from "../../hooks/useFilterData";
 import useGetUsersByRole from "../../hooks/useGetUsersByRole";
 import { usersRoles } from "../../utils/usersEnum";
-import GenericLoading from "../base/GenericLoading";
 import GenericTable from "../base/GenericTable";
 
 type Props = {
@@ -13,7 +12,7 @@ const UserTable = ({ searchText, role }: Props) => {
   const { data: users, error, isLoading } = useGetUsersByRole(role);
   const filteredUsers = useFilterData(users, searchText);
 
-  if (isLoading) return <GenericLoading size={60} />;
+  if (isLoading) return <div>CARREGANDO...</div>;
   if (error) return <div>ERRO</div>;
   if (!users?.length) return <div>SEM DADOS</div>;
 

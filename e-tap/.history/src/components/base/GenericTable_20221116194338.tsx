@@ -1,3 +1,12 @@
+import { IconProps } from "phosphor-react";
+import {
+  useEffect,
+  useState,
+  FC,
+  isValidElement,
+  ReactComponentElement,
+} from "react";
+
 type Props = {
   values?: any[];
   columns?: string[];
@@ -18,10 +27,15 @@ const GenericTable = ({ values, columns, onClickRow }: Props) => {
         <tbody>
           {values?.map((rowValues, i) => (
             <tr key={i} onClick={() => onClickRow && onClickRow(rowValues)}>
-              {columns?.map((columnName, j) => (
-                <td key={j}>{rowValues[columnName]}</td>
-                // <td key={j}>{rowValues[columnName]}</td>
-              ))}
+              {columns?.map((columnName, j) =>
+                isValidElement(rowValues[columnName]) ? (
+                  <td key={j}>
+                    <rowValues.icon />
+                  </td>
+                ) : (
+                  <td key={j}>{rowValues[columnName]}</td>
+                )
+              )}
             </tr>
           ))}
         </tbody>

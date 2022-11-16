@@ -1,10 +1,11 @@
+import { useEffect, useState } from "react";
+
 type Props = {
   values?: any[];
   columns?: string[];
-  onClickRow?: (row: any) => void;
 };
 
-const GenericTable = ({ values, columns, onClickRow }: Props) => {
+const GenericTable = ({ values, columns }: Props) => {
   return (
     <div className="max-h-full overflow-y-auto">
       <table className="table w-full">
@@ -17,10 +18,9 @@ const GenericTable = ({ values, columns, onClickRow }: Props) => {
         </thead>
         <tbody>
           {values?.map((rowValues, i) => (
-            <tr key={i} onClick={() => onClickRow && onClickRow(rowValues)}>
+            <tr key={i}>
               {columns?.map((columnName, j) => (
                 <td key={j}>{rowValues[columnName]}</td>
-                // <td key={j}>{rowValues[columnName]}</td>
               ))}
             </tr>
           ))}
