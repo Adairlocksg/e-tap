@@ -9,12 +9,12 @@ type SidebarDataType = {
 };
 
 const SidebarData: SidebarDataType[] = [
-  {
-    id: 1,
-    description: "Início",
-    icon: House,
-    path: "/home",
-  },
+  // {
+  //   id: 1,
+  //   description: "Início",
+  //   icon: House,
+  //   path: "/home",
+  // },
   {
     id: 2,
     description: "Disciplinas",

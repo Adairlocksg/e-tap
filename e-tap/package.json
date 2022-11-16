@@ -18,6 +18,7 @@
     "phosphor-react": "^1.4.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-multi-date-picker": "^3.3.4",
     "react-router-dom": "^6.4.1",
     "react-select": "^5.6.1",
     "theme-change": "^2.2.0"

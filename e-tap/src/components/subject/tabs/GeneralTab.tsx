@@ -12,17 +12,34 @@ const people = [
 const GeneralTab = () => {
   return (
     <div className="w-full flex flex-col">
-      <span className="label-text">Nome</span>
+      <span className="label-text">Nome da disciplina</span>
       <input
         type="text"
-        name="name"
+        name="subject_name"
         // value={student.name}
         placeholder="Escreva aqui"
         // onChange={handleChangeStudent}
         required
         className="input input-bordered w-full mb-4"
       />
-      <Select data={people} />
+      <div className="flex">
+        <div>
+          <span className="label-text">Professor</span>
+          <Select data={people} displayValue="name" className="flex-1" />
+        </div>
+        <div className="flex flex-col flex-1 ml-2">
+          <span className="label-text mb-1">Id da tag</span>
+          <input
+            type="text"
+            name="tag_id"
+            // value={student.name}
+            placeholder="Escreva aqui"
+            // onChange={handleChangeStudent}
+            required
+            className="input input-bordered"
+          />
+        </div>
+      </div>
     </div>
   );
 };

@@ -2,7 +2,7 @@ import { Combobox, Transition } from "@headlessui/react";
 import { CaretDown, Check } from "phosphor-react";
 import { Fragment, useState } from "react";
 
-const Select = ({ data }: any) => {
+const Select = ({ data, displayValue }: any) => {
   const [selected, setSelected] = useState(data[0]);
   const [query, setQuery] = useState("");
 
@@ -10,20 +10,20 @@ const Select = ({ data }: any) => {
     query === ""
       ? data
       : data.filter((person: any) =>
-          person.name
+          person[displayValue]
             .toLowerCase()
             .replace(/\s+/g, "")
             .includes(query.toLowerCase().replace(/\s+/g, ""))
         );
 
   return (
-    <div className="w-72">
+    <div className="w-80">
       <Combobox value={selected} onChange={setSelected}>
         <div className="relative mt-1">
           <div className="relative w-full cursor-default overflow-hidden rounded-lg  text-left shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 sm:text-sm">
             <Combobox.Input
               className="w-full border-none py-3 pl-3 pr-10 text-sm bg-[color:var(--w-base-100)] leading-5 text-white focus:ring-0"
-              displayValue={(person) => (person as any).name}
+              displayValue={(person) => (person as any)[displayValue]}
               onChange={(event) => setQuery(event.target.value)}
             />
             <Combobox.Button className="absolute inset-y-0 right-0 flex items-center pr-2">
@@ -37,7 +37,7 @@ const Select = ({ data }: any) => {
             leaveTo="opacity-0"
             afterLeave={() => setQuery("")}
           >
-            <Combobox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-[color:var(--w-base-100)] py-1 text-base shadow-lg ring-1 ring-white ring-opacity-5 focus:outline-none sm:text-sm">
+            <Combobox.Options className="absolute z-20  mt-1 max-h-60 w-full overflow-auto rounded-md bg-[color:var(--w-base-100)] py-1 text-base shadow-lg ring-1 ring-white ring-opacity-5 focus:outline-none sm:text-sm">
               {filteredData.length === 0 && query !== "" ? (
                 <div className="relative cursor-default select-none py-2 px-4 text-white">
                   Nenum resultado.
