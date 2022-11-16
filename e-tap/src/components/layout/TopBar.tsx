@@ -1,14 +1,15 @@
+import { Moon, Sun } from "phosphor-react";
 import { useEffect, useState } from "react";
 import { themeChange } from "theme-change";
 
 const themesStructure: { [key: string]: any } = {
   light: {
     label: "light",
-    emoji: "☀️",
+    icon: <Sun size={20} />,
   },
   dark: {
     label: "dark",
-    emoji: "🌙",
+    icon: <Moon size={20} />,
   },
 };
 
@@ -28,7 +29,7 @@ const TopBar = () => {
         data-set-theme={nextTheme}
         onClick={() => setTheme(nextTheme)}
       >
-        {themesStructure[nextTheme].emoji}
+        {themesStructure[nextTheme].icon}
       </button>
     </div>
   );

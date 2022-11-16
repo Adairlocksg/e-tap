@@ -4,6 +4,7 @@
 
 [data-theme="dark"] {
   --w-bg-color: #292929;
+  --w-base-100: #303030
 }
 [data-theme="light"] {
   --w-bg-color: #d9d9d9;
