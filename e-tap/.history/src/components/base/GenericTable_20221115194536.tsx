@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 type Props = {
   values?: any[];
   columns?: string[];
@@ -17,10 +19,9 @@ const GenericTable = ({ values, columns, onClickRow }: Props) => {
         </thead>
         <tbody>
           {values?.map((rowValues, i) => (
-            <tr key={i} onClick={() => onClickRow && onClickRow(rowValues)}>
+            <tr key={i} onClick={onClickRow}>
               {columns?.map((columnName, j) => (
                 <td key={j}>{rowValues[columnName]}</td>
-                // <td key={j}>{rowValues[columnName]}</td>
               ))}
             </tr>
           ))}

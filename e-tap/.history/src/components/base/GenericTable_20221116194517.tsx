@@ -1,3 +1,5 @@
+import { UserList } from "phosphor-react";
+
 type Props = {
   values?: any[];
   columns?: string[];
@@ -19,7 +21,7 @@ const GenericTable = ({ values, columns, onClickRow }: Props) => {
           {values?.map((rowValues, i) => (
             <tr key={i} onClick={() => onClickRow && onClickRow(rowValues)}>
               {columns?.map((columnName, j) => (
-                <td key={j}>{rowValues[columnName]}</td>
+                <td key={j}></td>
                 // <td key={j}>{rowValues[columnName]}</td>
               ))}
             </tr>

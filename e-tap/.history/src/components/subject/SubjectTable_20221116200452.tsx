@@ -17,7 +17,7 @@ const SubjectTable = ({ searchText }: Props) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedSubject, setSelectedSubject] = useState<any>();
 
-  if (isLoading) return <GenericLoading size={60} />;
+  if (isLoading) return <GenericLoading />;
   if (error) return <div>ERRO</div>;
   if (!subjects?.length) return <div>SEM DADOS</div>;
 
