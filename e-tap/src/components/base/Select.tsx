@@ -8,7 +8,7 @@ const Select = ({ data, displayValue, value, setValue }: any) => {
   const filteredData =
     query === ""
       ? data
-      : data.filter((person: any) =>
+      : data?.filter((person: any) =>
           person[displayValue]
             .toLowerCase()
             .replace(/\s+/g, "")
