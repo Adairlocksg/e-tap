@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import useFilterData from "../../hooks/useFilterData";
 import useGetUsersByRole from "../../hooks/useGetUsersByRole";
 import { usersRoles } from "../../utils/usersEnum";
@@ -8,16 +7,12 @@ import GenericTable from "../base/GenericTable";
 type Props = {
   searchText?: string;
   role: usersRoles;
-  reload?: boolean;
+  reload?: React.Dispatch<boolean>;
 };
 
-const UserTable = ({ searchText, role, reload }: Props) => {
-  const { data: users, error, isLoading, refetch } = useGetUsersByRole(role);
+const UserTable = ({ searchText, role }: Props) => {
+  const { data: users, error, isLoading } = useGetUsersByRole(role);
   const filteredUsers = useFilterData(users, searchText);
-
-  useEffect(() => {
-    if (reload) refetch().then();
-  }, [reload]);
 
   if (isLoading) return <GenericLoading size={60} />;
   if (error) return <div>ERRO</div>;

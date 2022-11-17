@@ -9,7 +9,7 @@ import SubjectStudentsWindow from "./SubjectStudentsWindow";
 
 type Props = {
   searchText?: string;
-  reload?: boolean;
+  reload: boolean;
 };
 
 const SubjectTable = ({ searchText, reload }: Props) => {

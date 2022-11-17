@@ -34,7 +34,6 @@ const StudentWindow = ({ isOpen, setIsOpen }: Props) => {
     {
       onSuccess: async () => {
         await queryClient.invalidateQueries(["getStudents"]);
-        setIsOpen(false);
       },
     }
   );
@@ -110,7 +109,6 @@ const StudentWindow = ({ isOpen, setIsOpen }: Props) => {
           </div>
           <div className="modal-action">
             <button
-              type="button"
               className="btn btn-error"
               onClick={() => {
                 setIsOpen(false);

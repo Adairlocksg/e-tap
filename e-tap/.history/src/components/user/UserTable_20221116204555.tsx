@@ -8,7 +8,7 @@ import GenericTable from "../base/GenericTable";
 type Props = {
   searchText?: string;
   role: usersRoles;
-  reload?: boolean;
+  reload?: React.Dispatch<boolean>;
 };
 
 const UserTable = ({ searchText, role, reload }: Props) => {
@@ -16,7 +16,7 @@ const UserTable = ({ searchText, role, reload }: Props) => {
   const filteredUsers = useFilterData(users, searchText);
 
   useEffect(() => {
-    if (reload) refetch().then();
+    if (reload) refetch();
   }, [reload]);
 
   if (isLoading) return <GenericLoading size={60} />;

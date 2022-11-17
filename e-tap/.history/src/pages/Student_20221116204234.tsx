@@ -1,17 +1,15 @@
-import { Dialog, Transition } from "@headlessui/react";
-import { Fragment, useEffect, useState } from "react";
-
-import TeacherWindow from "../components/teacher/TeacherWindow";
-
+import { useEffect, useState } from "react";
+import StudentWindow from "../components/student/StudentWindow";
 import UserTable from "../components/user/UserTable";
 import { usersRoles } from "../utils/usersEnum";
-const Teacher = () => {
+
+const Student = () => {
   const [searchText, setSearchText] = useState("");
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
-  const [reloadTable, setReloadTable] = useState(false);
 
   useEffect(() => {
-    setReloadTable(true);
+    console.log("Student");
+    setSearchText(searchText);
   }, [isAddModalOpen]);
 
   return (
@@ -19,29 +17,25 @@ const Teacher = () => {
       <div className="w-full flex justify-between mb-2">
         <input
           type="text"
-          placeholder="Pesquisar professor"
+          placeholder="Pesquisar aluno"
           onInput={(e: React.ChangeEvent<HTMLInputElement>) => {
             setSearchText(e.target.value);
           }}
           className="input input-bordered w-full max-w-xs"
         />
         <label
-          htmlFor="my-modal-teacher"
-          className="btn btn-secondary modal-button"
+          htmlFor="my-modal-student"
+          className="btn modal-button btn-secondary"
           onClick={() => setIsAddModalOpen(true)}
         >
           Adicionar
         </label>
-        <input type="checkbox" id="my-modal-teacher" className="modal-toggle" />
-        <TeacherWindow setIsOpen={setIsAddModalOpen} isOpen={isAddModalOpen} />
+        <input type="checkbox" id="my-modal-student" className="modal-toggle" />
+        <StudentWindow setIsOpen={setIsAddModalOpen} isOpen={isAddModalOpen} />
       </div>
-      <UserTable
-        searchText={searchText}
-        role={usersRoles.teacher}
-        reload={reloadTable}
-      />
+      <UserTable searchText={searchText} role={usersRoles.student} />
     </div>
   );
 };
 
-export default Teacher;
+export default Student;
