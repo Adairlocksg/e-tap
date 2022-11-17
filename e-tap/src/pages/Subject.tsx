@@ -29,7 +29,7 @@ function Subject() {
         <input type="checkbox" id="my-modal-subject" className="modal-toggle" />
         <SubjectWindow setIsOpen={setIsAddModalOpen} isOpen={isAddModalOpen} />
       </div>
-      {/* <SubjectTable searchText={searchText} /> */}
+      <SubjectTable searchText={searchText} />
     </div>
   );
 }

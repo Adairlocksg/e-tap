@@ -2,8 +2,7 @@ import { Combobox, Transition } from "@headlessui/react";
 import { CaretDown, Check } from "phosphor-react";
 import { Fragment, useState } from "react";
 
-const Select = ({ data, displayValue }: any) => {
-  const [selected, setSelected] = useState(data[0]);
+const Select = ({ data, displayValue, value, setValue }: any) => {
   const [query, setQuery] = useState("");
 
   const filteredData =
@@ -18,7 +17,7 @@ const Select = ({ data, displayValue }: any) => {
 
   return (
     <div className="w-80">
-      <Combobox value={selected} onChange={setSelected}>
+      <Combobox value={value} onChange={setValue}>
         <div className="relative mt-1">
           <div className="relative w-full cursor-default overflow-hidden rounded-lg  text-left shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 sm:text-sm">
             <Combobox.Input

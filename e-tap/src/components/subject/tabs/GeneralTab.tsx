@@ -1,4 +1,5 @@
 import Select from "../../base/Select";
+import { useState } from "react";
 
 const people = [
   { id: 1, name: "Wade Cooper" },
@@ -9,7 +10,9 @@ const people = [
   { id: 6, name: "Hellen Schmidt" },
 ];
 
-const GeneralTab = () => {
+const GeneralTab = ({ subject, setSubject }: any) => {
+  const [selected, setSelected] = useState(people[0]);
+
   return (
     <div className="w-full flex flex-col">
       <span className="label-text">Nome da disciplina</span>
@@ -25,7 +28,13 @@ const GeneralTab = () => {
       <div className="flex">
         <div>
           <span className="label-text">Professor</span>
-          <Select data={people} displayValue="name" className="flex-1" />
+          <Select
+            data={people}
+            displayValue="name"
+            value={selected}
+            setValue={setSelected}
+            className="flex-1"
+          />
         </div>
         <div className="flex flex-col flex-1 ml-2">
           <span className="label-text mb-1">Id da tag</span>
