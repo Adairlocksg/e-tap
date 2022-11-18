@@ -49,7 +49,7 @@ const SubjectTabs = ({
   ];
 
   return (
-    <div className="w-full max-w-3xl px-2 py-16 sm:px-0">
+    <div className="w-full max-w-3xl px-2 mt-2 sm:px-0">
       <Tab.Group>
         <Tab.List className="flex space-x-1 rounded-xl bg-[color:var(--w-base-100)] p-1">
           {tabs.map((tab) => (

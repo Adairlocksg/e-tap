@@ -76,7 +76,7 @@ const SubjectWindow = ({ isOpen, setIsOpen }: Props) => {
     <GenericWindow title="Disciplina" isOpen={isOpen} setIsOpen={setIsOpen}>
       <form onSubmit={handleSaveSubject}>
         <div className="form-control">
-          <div className="w-full flex flex-col">
+          <div className="w-full h-full flex flex-col">
             <SubjectTabs
               subject={subject}
               setSubject={setSubject}

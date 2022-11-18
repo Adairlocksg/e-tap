@@ -43,7 +43,7 @@ const StudentsTab = ({ studentsList, setStudentsList }: any) => {
 
   if (isLoading) return <GenericLoading size={60} />;
   return (
-    <div className="w-full flex flex-col">
+    <div className="w-full max-h-96 flex flex-col">
       <div className="flex mb-2">
         <div>
           <span className="label-text">Aluno</span>
