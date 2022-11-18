@@ -1,17 +1,23 @@
+import useGetUsersByRole from "../../../hooks/useGetUsersByRole";
+import { usersRoles } from "../../../utils/usersEnum";
+import GenericLoading from "../../base/GenericLoading";
 import Select from "../../base/Select";
-import { useState } from "react";
 
-const people = [
-  { id: 1, name: "Wade Cooper" },
-  { id: 2, name: "Arlene Mccoy" },
-  { id: 3, name: "Devon Webb" },
-  { id: 4, name: "Tom Cook" },
-  { id: 5, name: "Tanya Fox" },
-  { id: 6, name: "Hellen Schmidt" },
-];
+const GeneralTab = ({
+  name,
+  setName,
+  teacher,
+  setTeacher,
+  tagId,
+  setTagId,
+}: any) => {
+  const {
+    data: teachers,
+    error,
+    isLoading,
+  } = useGetUsersByRole(usersRoles.teacher);
 
-const GeneralTab = ({ subject, setSubject }: any) => {
-  const [selected, setSelected] = useState(people[0]);
+  if (isLoading) return <GenericLoading size={60} />;
 
   return (
     <div className="w-full flex flex-col">
@@ -19,9 +25,9 @@ const GeneralTab = ({ subject, setSubject }: any) => {
       <input
         type="text"
         name="subject_name"
-        // value={student.name}
+        value={name}
         placeholder="Escreva aqui"
-        // onChange={handleChangeStudent}
+        onChange={(e) => setName(e.target.value)}
         required
         className="input input-bordered w-full mb-4"
       />
@@ -29,10 +35,10 @@ const GeneralTab = ({ subject, setSubject }: any) => {
         <div>
           <span className="label-text">Professor</span>
           <Select
-            data={people}
+            data={teachers}
             displayValue="name"
-            value={selected}
-            setValue={setSelected}
+            value={teacher}
+            setValue={setTeacher}
             className="flex-1"
           />
         </div>
@@ -41,9 +47,9 @@ const GeneralTab = ({ subject, setSubject }: any) => {
           <input
             type="text"
             name="tag_id"
-            // value={student.name}
+            value={tagId}
             placeholder="Escreva aqui"
-            // onChange={handleChangeStudent}
+            onChange={(e) => setTagId(e.target.value)}
             required
             className="input input-bordered"
           />

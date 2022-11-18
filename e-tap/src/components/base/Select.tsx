@@ -22,7 +22,9 @@ const Select = ({ data, displayValue, value, setValue }: any) => {
           <div className="relative w-full cursor-default overflow-hidden rounded-lg  text-left shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 sm:text-sm">
             <Combobox.Input
               className="w-full border-none py-3 pl-3 pr-10 text-sm bg-[color:var(--w-base-100)] leading-5 text-white focus:ring-0"
-              displayValue={(person) => (person as any)[displayValue]}
+              displayValue={(person: any) =>
+                person ? person[displayValue] : ""
+              }
               onChange={(event) => setQuery(event.target.value)}
             />
             <Combobox.Button className="absolute inset-y-0 right-0 flex items-center pr-2">
