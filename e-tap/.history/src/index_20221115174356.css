@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+[data-theme="dark"] {
+  --w-bg-color: #292929;
+}
+[data-theme="light"] {
+  --w-bg-color: #cecece;
+}
