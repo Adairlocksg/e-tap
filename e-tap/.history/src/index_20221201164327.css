@@ -11,9 +11,13 @@
   --w-base-100: #f5f5f5;
 }
 
-#invert-logo {
+#login-logo {
+  background-color: blue;
   filter: invert(1);
-  mix-blend-mode: color-dodge;
+}
+
+#login-logo img {
+  filter: invert(1);
 }
 
 #logo-img {

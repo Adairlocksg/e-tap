@@ -19,12 +19,14 @@ const Sidebar = ({ setAuthToken }: any) => {
 
   return (
     <aside
-      className={classNames(
-        "min-h-[calc(100vh-5.7rem)] text-[#303030] min-w-min text-center transition-[width] duration-300 ease-in bg-gradient-to-b from-[#54f5cf] to-[#477bff] w-[20%] m-2 rounded-md p-5 ",
+      className={classNames([
+        "text-[#303030] min-w-min text-center transition-[width] duration-300 ease-in bg-gradient-to-b from-[#54f5cf] to-[#477bff] w-[20%] m-2 rounded-md p-5 ",
         {
           "w-[5%]": isCollapsed,
-        }
-      )}
+          "min-h-[calc(100vh-5.7rem)]": false,
+          "min-h-[10px]": true,
+        },
+      ])}
     >
       {!isCollapsed ? (
         <section>
@@ -33,9 +35,7 @@ const Sidebar = ({ setAuthToken }: any) => {
             onClick={collapseSidebar}
             size={40}
           />
-          <span className="h-[20px]">
-            <Logo />
-          </span>
+          <Logo />
         </section>
       ) : (
         <ArrowRight
@@ -44,12 +44,7 @@ const Sidebar = ({ setAuthToken }: any) => {
           size={40}
         />
       )}
-      <div
-        className={classNames("flex justify-between flex-col", {
-          "h-[calc(100vh-5.7rem)]": isCollapsed,
-          "h-[calc(100vh-13.5rem)]": !isCollapsed,
-        })}
-      >
+      <div className="flex justify-between h-[calc(100vh-5.7rem)] flex-col">
         <ul className="text-lg">
           {SidebarData.map((item) => {
             return (

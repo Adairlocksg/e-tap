@@ -65,7 +65,7 @@ function Login({ setAuthToken }: any) {
             <div className="card-body">
               <div
                 className="flex justify-center h-[10rem] w-full"
-                id={theme === "dark" ? "invert-logo" : ""}
+                id={theme === "light" ? "invert-logo" : ""}
               >
                 <Logo />
               </div>

@@ -26,30 +26,16 @@ const Sidebar = ({ setAuthToken }: any) => {
         }
       )}
     >
-      {!isCollapsed ? (
-        <section>
-          <ArrowLeft
-            className="cursor-pointer rounded-md hover:bg-white/30 backdrop-blur-sm p-2"
-            onClick={collapseSidebar}
-            size={40}
-          />
-          <span className="h-[20px]">
-            <Logo />
-          </span>
-        </section>
-      ) : (
-        <ArrowRight
-          className="m-auto cursor-pointer rounded-md hover:bg-white/30 backdrop-blur-sm p-2"
+      <section>
+        <ArrowLeft
+          className="cursor-pointer rounded-md hover:bg-white/30 backdrop-blur-sm p-2"
           onClick={collapseSidebar}
           size={40}
         />
-      )}
-      <div
-        className={classNames("flex justify-between flex-col", {
-          "h-[calc(100vh-5.7rem)]": isCollapsed,
-          "h-[calc(100vh-13.5rem)]": !isCollapsed,
-        })}
-      >
+        {!isCollapsed ? <Logo /> : null}
+      </section>
+
+      <div className="flex justify-between h-[calc(100vh-5.7rem)] flex-col">
         <ul className="text-lg">
           {SidebarData.map((item) => {
             return (

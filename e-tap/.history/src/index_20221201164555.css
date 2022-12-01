@@ -11,14 +11,17 @@
   --w-base-100: #f5f5f5;
 }
 
-#invert-logo {
-  filter: invert(1);
-  mix-blend-mode: color-dodge;
+#login-logo {
+}
+
+#login-logo img {
+  filter: brightness(0.9) invert(0.7) sepia(0.5) hue-rotate(100deg)
+    saturate(200%);
 }
 
 #logo-img {
   height: 100%;
   aspect-ratio: 3/2;
   object-fit: contain;
-  mix-blend-mode: color-burn;
+  /* mix-blend-mode: color-burn; */
 }

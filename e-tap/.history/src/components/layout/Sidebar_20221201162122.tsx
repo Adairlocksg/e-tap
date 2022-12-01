@@ -33,9 +33,7 @@ const Sidebar = ({ setAuthToken }: any) => {
             onClick={collapseSidebar}
             size={40}
           />
-          <span className="h-[20px]">
-            <Logo />
-          </span>
+          <Logo />
         </section>
       ) : (
         <ArrowRight
@@ -44,12 +42,7 @@ const Sidebar = ({ setAuthToken }: any) => {
           size={40}
         />
       )}
-      <div
-        className={classNames("flex justify-between flex-col", {
-          "h-[calc(100vh-5.7rem)]": isCollapsed,
-          "h-[calc(100vh-13.5rem)]": !isCollapsed,
-        })}
-      >
+      <div className="flex justify-between h-[calc(100vh-5.7rem)] flex-col">
         <ul className="text-lg">
           {SidebarData.map((item) => {
             return (

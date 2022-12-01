@@ -1,7 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { Eye, EyeSlash, SignIn } from "phosphor-react";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Logo from "../components/base/Logo";
 import enviroment from "../environments/enviroment";
 
@@ -11,11 +11,6 @@ type user = {
 };
 
 function Login({ setAuthToken }: any) {
-  const [theme, setTheme] = useState(localStorage.getItem("theme"));
-  useEffect(() => {
-    setTheme(localStorage.getItem("theme"));
-  }, []);
-
   const [user, setUser] = useState<user>({
     email: "",
     password: "",
@@ -63,10 +58,10 @@ function Login({ setAuthToken }: any) {
         <form onSubmit={handleLogin}>
           <div className="form-control">
             <div className="card-body">
-              <div
-                className="flex justify-center h-[10rem] w-full"
-                id={theme === "dark" ? "invert-logo" : ""}
-              >
+              {/* <h2 className="flex justify-center text-5xl mb-2">
+
+              </h2> */}
+              <div className="flex justify-center h-[10rem] w-full">
                 <Logo />
               </div>
               <input
